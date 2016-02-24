@@ -78,7 +78,7 @@ TEMPLATES = [
                 # Add this when serving media
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
-                
+
             ],
         },
     },
@@ -87,17 +87,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'images.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'image',
-        'USER': 'alexmwaleh',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+DATABASES = {}
+if os.getenv('TRAVIS_BUILD', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'image',
+            'USER': 'travis',
+            'PASSWORD': '',
+            'HOST': '0.0.0.0',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'image',
+            'USER': 'alexmwaleh',
+            'PASSWORD': '',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
     'django_facebook.auth_backends.FacebookBackend',

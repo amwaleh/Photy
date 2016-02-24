@@ -13,8 +13,11 @@
             <a href="#myModal" data-toggle="modal">
                 <i class="fa fa-trash pull-right delete" id="{{image.id}}"></i></a>
         </div>
-    </div>  {% empty %} 
-  {% endfor %} {% if images|length > 2%}
+    </div>  
+    {% empty %} 
+    ---- No media ----
+  {% endfor %} 
+  {% if images|length > 2%}
     <!-- bouncy arrow -->
     <div class="arrow animated bounce">
         <i class="fa fa-arrow-down"></i> {%endif%}
