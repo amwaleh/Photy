@@ -1,0 +1,57 @@
+{% block content%} {% load imagekit %}
+<div class='uploader'>
+    <form class="dropzone" action="{% url "main:home" %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %} 
+    </form>
+    
+</div>
+<div class='image-collection' id="wrapper">
+    {% for image in images %}
+    <div class='thumbholder'>
+        <img src="{{image.thumbnail.url}}" alt="" data="{{image.file.url}}" id="{{image.id}}" class='thumbs'>
+        <div class="img-caption">
+            <label>modified: {{image.created_on}} </label>
+            <a href="#myModal"  data-toggle="modal">
+            <i class="fa fa-trash pull-right delete" id="{{image.id}}"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    {% if images|length > 2%}
+    <div class="arrow animated bounce">
+    <i class="fa fa-arrow-down" ></i>
+    {%endif%}
+</div>
+</div>
+<!-- modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <h4 class="modal-title">Warning!</h4>
+        </div>
+        <div class="modal-body">
+          <img class="del-image" src='' width=100% height=300px>
+          You are about to delete this picture, continue ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button id="submit" type="button" class="btn btn-primary" data-dismiss="modal">delete</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  
+  
+</div>
+
+
+
+{% endblock %}
+    
+<script type="text/javascript">
+
+
+
+
+</script>

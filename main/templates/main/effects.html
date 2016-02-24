@@ -1,0 +1,10 @@
+{% block content%}
+<slidebox content-width="200%" class="my-slidebox" content-class="my-slidebox-content">
+    <ul class="row effects">
+        {%for effect in effects %}
+        <li class="effect-box button-default" style="background-image:url('/media/profile/thumbnails/{{effect}}.PNG')" id="{{effect}}1"><a>{{effect}}</a></li>
+        {% endfor %}
+    </ul>
+</slidebox>
+
+{% endblock %}

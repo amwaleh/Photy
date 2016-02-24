@@ -1,0 +1,70 @@
+{% extends "main/partials/base.html" %} 
+{% block content%} 
+{% load staticfiles %}
+{% load imagekit %}
+<!-- nav bar -->
+{%include "main/navbar.html"%}
+<!-- /navbar -->
+
+    <!-- colum1 -->
+<div class="main  col-lg-2 col-xs-1">
+    {%include "main/leftbar.html"%}
+</div>
+<!-- colum2 -->
+<div class="work col-lg-9 col-xs-10 col-md-8 " style="margin:0; padding:0; height:100vh;">
+    <!-- work area -->
+    <i class="fa fa-spinner fa-6 fa-pulse" id="loading-indicator" style="display:none" /></i>
+    <div class="row canvas ">
+        <div class="photo">
+
+            <img src="/media/profile/colorpsychology.jpg" alt="" id="" class='editor' width=100% height="100%">
+            <!-- Icons for saving and download photo -->
+            <div class="photo-icons">
+                <form action="save-effects/" method="POST" enctype="multipart/form-data" class='form-photo' id='filepath'>{% csrf_token %}
+                    <input type="hidden" name='path' value="">
+                </form>
+                <center>
+                    <a href="" class='img-save'><i class="medium fa fa-floppy-o fa-lg"></i><caption> save</caption></a>
+                    <a href="/media/profile/colorpsychology.jpg" id='download' download><i class="medium fa fa-cloud-download fa-lg"></i>
+                    <caption> download</caption></a>
+                    <div class="fb-share-button" data-href="/media/profile/colorpsychology.jpg" data-layout="button_count">
+                    </div>
+                    <div id="fb-root"></div>
+                    
+                </center>
+            </div>
+        </div>
+    </div>
+    <!-- effects -->
+    {%include "main/effects.html"%}
+    <!-- IMPORTANT enctype attribute! -->
+</div>
+
+
+
+
+
+<script>
+$(".photo-icons").on('click', 'i', function() {
+    console.log('almost');
+    $("[name=path]").val($('.editor').attr('src'))
+    $("#filepath").submit();
+})
+</script>
+
+<style type="text/css">
+    
+   
+</style>
+<script>
+                    (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1689075798037081";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                    </script>
+
+    {% endblock %} 
