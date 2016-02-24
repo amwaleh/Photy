@@ -5,11 +5,11 @@
 <!-- nav bar -->
 {%include "main/navbar.html"%}
 <!-- /navbar -->
-
-    <!-- colum1 -->
+ <!-- colum1 -->
 <div class="main  col-lg-2 col-xs-1">
     {%include "main/leftbar.html"%}
 </div>
+<!-- /colum1 -->
 <!-- colum2 -->
 <div class="work col-lg-9 col-xs-10 col-md-8 " style="margin:0; padding:0; height:100vh;">
     <!-- work area -->
@@ -30,7 +30,6 @@
                     <div class="fb-share-button" data-href="/media/profile/colorpsychology.jpg" data-layout="button_count">
                     </div>
                     <div id="fb-root"></div>
-                    
                 </center>
             </div>
         </div>
@@ -38,33 +37,26 @@
     <!-- effects -->
     {%include "main/effects.html"%}
     <!-- IMPORTANT enctype attribute! -->
+    <!-- /column 2 -->
 </div>
-
-
-
-
-
 <script>
-$(".photo-icons").on('click', 'i', function() {
-    console.log('almost');
-    $("[name=path]").val($('.editor').attr('src'))
-    $("#filepath").submit();
-})
+// $(".photo-icons").on('click', '.img-save', function() {
+//     console.log('almost');
+//     $("[name=path]").val($('.editor').attr('src'))
+//     $("#filepath").submit();
+// })
 </script>
 
-<style type="text/css">
-    
-   
-</style>
 <script>
-                    (function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) return;
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1689075798037081";
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));
-                    </script>
+// facebook sdk
+(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s);
+js.id = id;
+js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1689075798037081";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
-    {% endblock %} 
+{% endblock %} 

@@ -1,5 +1,4 @@
 from __future__ import print_function
-
 from PIL import Image
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponse
@@ -15,7 +14,6 @@ from effects import effect
 from images.settings import MEDIA_ROOT, MEDIA_URL, BASE_DIR
 from sweep import housekeeping
 import random
-
 
 
 class Effects(TemplateView):
@@ -137,8 +135,3 @@ class DeleteImage(LoginRequiredMixin, TemplateView):
         if image:
             return HttpResponse(image.delete())
         return HttpResponse(image.delete())
-
-
-
-
-        # http://notesbyanerd.com/joint-login-and-signup-django-allauth-view

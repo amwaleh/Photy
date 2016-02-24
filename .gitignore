@@ -2,5 +2,5 @@ env
 env/*
 *.pyc
 *.*~
-main/media/*
+media/*
 migrations/*

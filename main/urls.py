@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from django.contrib.auth.views import logout
-from main.views import *
+from main.views import (Home, ImageProcessing,
+                        DeleteImage, SaveProcessedImage, Effects)
 
 
 urlpatterns = [
@@ -12,6 +13,4 @@ urlpatterns = [
     url(r'^image/(?P<id>[0-9]+)/delete/$',
         DeleteImage.as_view(), name='delete'),
     url(r'^save-effects/', SaveProcessedImage.as_view(), name='save_effects'),
-
-
 ]
