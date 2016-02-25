@@ -25,7 +25,7 @@ SECRET_KEY = 'ptxn2=7yz(5m&*^d$&r5lok4voi%4v2o_n+g(igk+79c1e0=f2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 SITE_ID = 1
 # FACEBOOK_APP_ID =''
 # FACEBOOK_APP_SECRET =''
@@ -158,3 +158,4 @@ ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_AUTO_SIGNUP = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEBUG = True

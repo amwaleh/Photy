@@ -1,10 +1,10 @@
- {% block content%}
+ {% block content%}{%load staticfiles%}
 <nav class="navbar-wrapper " role="navigation" style="margin-bottom:0 ">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="navbar-brand" href="#">Photy.</a>
+        <a class="navbar-brand" href="#"> <img src="{% static "main/images/logo.png" %}" alt="" width=32 style="transform: translate(5px,-12px);"> Photy.</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         {% if user.is_authenticated %}

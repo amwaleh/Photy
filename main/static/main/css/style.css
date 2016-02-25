@@ -34,7 +34,8 @@ body {
     margin: 0.1em;
     border-radius: 5px;
     font-weight: 100;
-    background-image: url('/media/profile/colorpsychology.jpg') background-repeat: none;
+    background-image: url('../images/colorpsychology.jpg');
+    background-repeat: none;
     background-size: cover;
 }
 

@@ -8,6 +8,7 @@ import os
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 from django.dispatch import receiver
+from images.settings import BASE_DIR
 
 
 class UploadFile(models.Model):
@@ -25,6 +26,16 @@ class UploadFile(models.Model):
 
     class Meta:
         ordering = ('-modified_on',)
+
+    def get_url(self):
+        """Handle IOERR"""
+        try:
+            # get url if exists
+            if os.path.isfile(BASE_DIR + self.file.url):
+                return self.thumbnail.url
+            return None
+        except IOError:
+            return None
 
 
 class UserProfile(models.Model):

@@ -1,4 +1,4 @@
-{% block content%} {% load imagekit %}
+{% block content%} {% load imagekit %}{%load staticfiles%}
 <div class='uploader'>
 
     <form class="dropzone" action="{% url "main:home" %}" method="POST" enctype="multipart/form-data">
@@ -8,6 +8,7 @@
 <div class="wrapper">
     <div class='image-collection' id="wrapper">
         {% for image in images %}
+        {%if image.get_url%}
         <div class='thumbholder'>
             <img src="{{image.thumbnail.url}}" alt="" data="{{image.file.url}}" id="{{image.id}}" class='thumbs'>
             <div class="img-caption">
@@ -17,8 +18,9 @@
                     <i class="fa fa-trash pull-right delete" id="{{image.id}}"></i></a>
             </div>
         </div>
-        {% empty %}
-        <center>---- * ---- </center>{% endfor %} {% if images|length > 2%}
+        {%endif%}
+
+        </center>{% endfor %} {% if images|length > 2%}
         <!-- bouncy arrow -->
         <div class="arrow animated bounce">
             <i class="fa fa-arrow-down"></i> {%endif%}
