@@ -12,18 +12,14 @@ var myApp = {
             type: 'POST',
             url: '/save-effects/',
             data: {
-              csrfmiddlewaretoken:$("[name=csrfmiddlewaretoken]").val(),
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
                 'path': $('.editor').attr('src'),
             },
             success: function(data) {
-                $(".image-collection").load("/ .image-collection", function() {
-                        $(".thumbholder").on('click', '.delete', function(e) {
-                            var img = $(this).parents(".thumbholder").find("img").attr("data")
-                            e.preventDefault();
-                            $(".del-image").attr("src", img)
-                            $(".del-image").attr("id", $(this).attr('id'))
-                        })
-                    });
+                $(".wrapper").load("/ .image-collection", function() {
+                    $('.wrapper').on('click', 'img', myApp.prepareCanvas)
+                    $(".thumbholder").on('click', '.delete', myApp.deleteImage)
+                });
             },
         });
     },
@@ -46,16 +42,16 @@ var myApp = {
             },
         });
     },
-    prepareCanvas: function() {
+    prepareCanvas: function(e) {
+        e.preventDefault();
+
         var thumb = $(this).attr("src");
         var src = $(this).attr("data");
         $(".editor").attr("src", src);
         $("#download").attr("href", src);
         $(".fb-share-button").attr("data-href", src)
         var getThumb = function(effect, pic_path, $li) {
-            console.log(pic_path)
             $.ajax({
-                cache: false,
                 type: 'GET',
                 url: '/image/',
                 data: {
@@ -64,7 +60,8 @@ var myApp = {
                     'preview': true,
                 },
                 success: function(data) {
-                    
+                    console.log(data)
+
                     $li.css('background-image', 'url("' + data + '")')
                 },
             });
@@ -85,33 +82,33 @@ var myApp = {
     // onclick of modal delete images
     confirmedDelete: function() {
         url = "/image/" + $(".del-image").attr("id") + "/delete"
-        console.log(url)
         $.ajax({
             url: url,
             type: 'GET',
             success: function(data) {
-                    $(".image-collection").load("/ .image-collection", function() {
-                        $(".thumbholder").on('click', '.delete', function(e) {
-                            var img = $(this).parents(".thumbholder").find("img").attr("data")
-                            e.preventDefault();
-                            $(".del-image").attr("src", img)
-                            $(".del-image").attr("id", $(this).attr('id'))
-                        })
-                    });
-                
+                $(".wrapper").load("/ .image-collection", function() {
+                    $('.wrapper').on('click', 'img', myApp.prepareCanvas)
+                    $(".thumbholder").on('click', '.delete', function(e) {
+                        var img = $(this).parents(".thumbholder").find("img").attr("data")
+                        e.preventDefault();
+                        $(".del-image").attr("src", img)
+                        $(".del-image").attr("id", $(this).attr('id'))
+                    })
+                });
             }
         })
     },
 }
 $(document).ready(function() {
     myApp.init();
-    $('ul.effects').on('click', 'li', myApp.applyEffects)
+    $('ul.effects').on('click', 'li', myApp.applyEffects);
+    $('.wrapper').on('click', 'img', myApp.prepareCanvas);
 });
+
 // saves edited photos
 $(".photo-icons").on('click', '.img-save', myApp.saveEditedPic)
-// Triggers modal to appear
+    // Triggers modal to appear
 $(".thumbholder").on('click', '.delete', myApp.deleteImage)
-// Handles when delete confirmation is made
+    // Handles when delete confirmation is made
 $("#submit").on('click', myApp.confirmedDelete)
-// Puts image on canvas
-$('.image-collection').on('click', 'img', myApp.prepareCanvas)
+    // Puts image on canvas
