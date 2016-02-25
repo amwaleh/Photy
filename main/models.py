@@ -15,6 +15,7 @@ class UploadFile(models.Model):
 
     file = models.ImageField(upload_to='profile/%Y/%m/%d')
     owner = models.ForeignKey(User)
+    edited = models.SmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     modified_on = models.DateTimeField(auto_now=True)
     thumbnail = ImageSpecField(source='file',

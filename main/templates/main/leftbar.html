@@ -11,12 +11,14 @@
         <div class='thumbholder'>
             <img src="{{image.thumbnail.url}}" alt="" data="{{image.file.url}}" id="{{image.id}}" class='thumbs'>
             <div class="img-caption">
-                <label>modified: {{image.created_on}} </label>
+                {% if image.edited%}
+                <i class="fa fa-star-half-o retouch"></i> {%endif%}
                 <a href="#myModal" data-toggle="modal">
                     <i class="fa fa-trash pull-right delete" id="{{image.id}}"></i></a>
             </div>
         </div>
-        {% empty %} <center>---- * ---- </center>{% endfor %} {% if images|length > 2%}
+        {% empty %}
+        <center>---- * ---- </center>{% endfor %} {% if images|length > 2%}
         <!-- bouncy arrow -->
         <div class="arrow animated bounce">
             <i class="fa fa-arrow-down"></i> {%endif%}
@@ -46,5 +48,4 @@
 </div>
 <!-- /.modal -->
 </div>
-
 {% endblock %}

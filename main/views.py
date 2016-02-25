@@ -72,10 +72,8 @@ class SaveProcessedImage(LoginRequiredMixin, TemplateView):
             path_ready = self.copyfiles(path, new_path)
             if path_ready:
                 new_file = UploadFile.objects.all()
-                new_file.file = new_path
-                new_file.owner = request.user
                 new_file.update_or_create(
-                    file=media_path, owner=request.user)
+                    file=media_path, owner=request.user, edited=1)
                 return HttpResponseRedirect(reverse('main:home'))
             return HttpResponse("Error occured", status=405)
 

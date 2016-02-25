@@ -353,3 +353,8 @@ body {
 .navbar-collapse {
     box-shadow: 2px 2px 1px black;
 }
+
+.retouch {
+    color: rgba(255, 200, 0, 0.8);
+    z-index: 9999;
+}

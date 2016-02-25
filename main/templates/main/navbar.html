@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         {% if user.is_authenticated %}
         <a id="logout" href="/accounts/logout" class="pull-right btn-xs" style="transform: translate(0,12px);">Logout</a> {%endif %}
-        <img class="img-circle pull-right" src="{{ request.user.profile.profile_image_url }}" />
-        <div class="user-info pull-right" style="transform: translate(-50px,12px);">
+        <img class="img-circle pull-right" src="{{ request.user.profile.profile_image_url }}" style="transform: translate(0,7px);"/>
+        <div class="user-info pull-right" style="transform: translate(-10px,12px);">
             {% load account %}
-            <span> logged in as 
+            <span> 
         {% user_display user %} </span>
         </div>
     </div>
