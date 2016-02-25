@@ -1,7 +1,8 @@
 {% block content%} {% load imagekit %}
 <div class='uploader'>
+
     <form class="dropzone" action="{% url "main:home" %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+        {% csrf_token %} 
     </form>
 </div>
 <div class="wrapper">

@@ -222,13 +222,14 @@
 }
 
 .dropzone {
-    max-height: 250px;
+   
     border: 2px dashed rgba(200, 200, 200, 0.5);
-    background: rgba(255, 255, 255, 1);
-    padding: 1px 5px;
-    border-radius: 5px;
-    overflow: scroll;
-    max-width: 500%
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1px 1px;
+    overflow-x: scroll;
+    height:200px;
+    width:900px;
+    
 }
 
 .dropzone.dz-clickable {
@@ -259,6 +260,7 @@
 .dropzone .dz-message {
     text-align: center;
     margin: 2em 0;
+
 }
 
 .dropzone .dz-preview {
@@ -267,6 +269,7 @@
     vertical-align: top;
     margin: 16px;
     min-height: 100px;
+
 }
 
 .dropzone .dz-preview:hover {

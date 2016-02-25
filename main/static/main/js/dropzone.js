@@ -106,12 +106,12 @@
             withCredentials: false,
             parallelUploads: 2,
             uploadMultiple: false,
-            maxFilesize: 2,
+            maxFilesize: 4,
             paramName: "file",
             createImageThumbnails: true,
             maxThumbnailFilesize: 5,
             thumbnailWidth: 100,
-            thumbnailHeight: 120,
+            thumbnailHeight: 100,
             filesizeBase: 1000,
             maxFiles: null,
             params: {},
@@ -126,7 +126,7 @@
             hiddenInputContainer: "body",
             capture: null,
 
-            dictDefaultMessage: "Drop files here to upload <br><i class='fa fa-upload'></i>",
+            dictDefaultMessage: "Drop files here to upload <br><i class='fa fa-upload'></i><br><sub>(max~3MB)</sub>",
             dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
             dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
             dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
@@ -157,7 +157,7 @@
                     }
                 }
                 if (!messageElement) {
-                    messageElement = Dropzone.createElement("<div class=\"dz-message\"><span></span></div>");
+                    messageElement = Dropzone.createElement("<div class=\"dz-message\"><span>uu</span></div>");
                     this.element.appendChild(messageElement);
                 }
                 span = messageElement.getElementsByTagName("span")[0];
@@ -599,7 +599,8 @@
                                 $(".thumbholder").on('click', '.delete', myApp.deleteImage)
 
                             });
-
+                            _this.removeAllFiles();
+                            
                             return _this.emit("queuecomplete");
                         }), 0);
                     }
