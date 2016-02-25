@@ -11,20 +11,20 @@ Photy lets you upload photos, apply filters, save or share images with friends v
 
 #### Tasks and Deliverables
 
-| Task Nam                                     | Point |
+| Task Name                                     | Point |
 |----------------------------------------------|-------|
 | Create system  plan                          	|    1   |
 | Create workflow                               |   2    |
-| Create project                                |   1    |
+| Create project logic                                |   1    |
 | Create Models                                 |    4   |
-| Create Upload Model with Imagekit Integration |   3    |
-| Create upload forn                            |   3    |
-| Create Test for Model and View                |   2    |
+| Create UploadFile Model with Imagekit Integration |   3    |
+| Create upload form                            |   3    |
+| Create tests for models and views                |   2    |
 | Create view for upload                        |   1    |
 | Write module for Effects                      |  1     |
 | Write tests for effects                       |  1     |
-| Create front-end Using Mock up  wirefram     	|   2    |
-| Add Dropzone for Uploading Files              |  3     |
+| Create Templates Using Mockup  wireframe     	|   2    |
+| Add Dropzone for uploading Files              |  3     |
 | Add social login                             	|   3    |
 | Workon Templates                            	|    3   |
 
