@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'bootstrap3',
-    
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -105,7 +104,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
     'django_facebook.auth_backends.FacebookBackend',
     )
-
+WSGI_APPLICATION = 'images.wsgi.application'
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -143,9 +142,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 MEDIA_URL = '/media/'
+
 STATIC_URL = '/static/'
+
+STATIC_ROOT = "staticfiles"
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 LOGIN_REDIRECT_URL = '/'
+
 ACCOUNT_LOGOUT_ON_GET = True
-SOCIALACCOUNT_AUTO_SIGNUP = False 
+
+SOCIALACCOUNT_AUTO_SIGNUP = False
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
