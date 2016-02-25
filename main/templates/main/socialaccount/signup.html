@@ -1,0 +1,28 @@
+{% extends "main/partials/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% load staticfiles%}
+{% block content %}
+<div class="inset"><center>
+    <h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+  {% csrf_token %}
+	<DIV><div class="left" style="display:inline-block;margin:5px 2px;width:200px">{{form.username.label}}</div><div class="left" style="display:inline-block;margin:5px 2px;width:200px">{{form.username}}</div></DIV>
+ <DIV> <div class="" style="display:inline-block;margin:5px 2px;width:200px">{{form.email.label}}</div><div class="" style="display:inline-block;margin:5px 2px;width:200px">{{form.email}}</div></DIV>
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+</form>
+</center></div>
+<style>
+	body{  background-image: url("{% static "main/images/cover.JPEG" %}") ; } input{width:200px;} .inset{ background: url("{% static "main/images/logo.jpg" %}"); background-color: rgba(255,255,255,.9); background-repeat: no-repeat; background-position: 25% 4%; background-size:10%; width:80%; margin:0 auto; left:50%; transform: translate(20%,50%); font-weight: 100; padding-bottom :25px; box-shadow: 2px 2px 1px; color:teal; } button{ margin-top: 20px; transform: translate(51%,0%); }
+
+</style>
+{% endblock %}

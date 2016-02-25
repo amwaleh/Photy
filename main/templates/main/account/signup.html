@@ -1,5 +1,5 @@
 {% extends "main/account/base.html" %}
-
+{% load staticfiles%}
 
 {% load i18n %}
 
@@ -8,6 +8,7 @@
 {% block content %}
 
     <div class="inset">
+    <center><h5> Sign Up </h5></center>
         <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
           {% csrf_token %}
             {{ form.non_field_errors }}
@@ -25,7 +26,46 @@
           <button class="btn" type="submit">{% trans "Sign Up" %} &raquo;</button>
         </form>
         <div class="footnote">
-            Already have an account? <a href="{{ login_url }}">sign in</a>
+            <center>Already have an account? <a href="{{ login_url }}">sign in</a></center>
         </div>
     </div>
+    <style>
+body {
+    background-image: url("{% static "main/images/cover.JPEG" %}");
+    width:100%;
+}
+
+input {
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 5px;
+}
+
+.inset {
+   
+    background-color: rgba(255, 255, 255, .2);
+    background-repeat: no-repeat;
+    background-position: 25% 4%;
+    background-size: 10%;
+    width: 30%;
+    margin: 0 auto;
+    left: 50%;
+    transform: translate(1%, 20%);
+    font-weight: 100;
+    padding: 25px;
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, .7);
+    color: white;
+}
+
+button {
+    margin-top: 20px;
+    margin-left:18%;
+    width:200px;
+}
+.errorlist{
+  font-size: 10px;
+  color:yellow;
+}
+</style>
+
 {% endblock %}
