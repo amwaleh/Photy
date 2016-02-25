@@ -55,7 +55,7 @@ def rotate(image):
     """Rotate image by 25 degrees."""
     return image.rotate(25)
 
-# Create List  to handle respective effects
+# Create list  to handle respective effects
 effect = {
     "greyscale": black_white,
     "blur": glassial_blur,

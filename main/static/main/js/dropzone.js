@@ -106,14 +106,14 @@
             withCredentials: false,
             parallelUploads: 2,
             uploadMultiple: false,
-            maxFilesize: 256,
+            maxFilesize: 2,
             paramName: "file",
             createImageThumbnails: true,
-            maxThumbnailFilesize: 10,
+            maxThumbnailFilesize: 5,
             thumbnailWidth: 100,
             thumbnailHeight: 120,
             filesizeBase: 1000,
-            maxFiles: 2,
+            maxFiles: null,
             params: {},
             clickable: true,
             ignoreHiddenFiles: true,
@@ -593,17 +593,10 @@
                 return function(file) {
                     if (_this.getAddedFiles().length === 0 && _this.getUploadingFiles().length === 0 && _this.getQueuedFiles().length === 0) {
                         return setTimeout((function() {
-                            $(".image-collection").load("/ .image-collection", function() {
+                            $(".wrapper").load("/ .image-collection", function() {
+                                $('.image-collection').on('click', 'img', myApp.prepareCanvas)
                                 // delete function
-                                $(".thumbholder").on('click', '.delete', function(e) {
-                                    var img = $(this).parents(".thumbholder").find("img").attr("data")
-                                    e.preventDefault();
-                                    console.log(img);
-
-                                    $(".del-image").attr("src", img)
-                                    $(".del-image").attr("id", $(this).attr('id'))
-
-                                })
+                                $(".thumbholder").on('click', '.delete', myApp.deleteImage)
 
                             });
 

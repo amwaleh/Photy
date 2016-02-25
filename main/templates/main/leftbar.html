@@ -4,23 +4,22 @@
         {% csrf_token %}
     </form>
 </div>
-<div class='image-collection' id="wrapper">
-    {% for image in images %}
-    <div class='thumbholder'>
-        <img src="{{image.thumbnail.url}}" alt="" data="{{image.file.url}}" id="{{image.id}}" class='thumbs'>
-        <div class="img-caption">
-            <label>modified: {{image.created_on}} </label>
-            <a href="#myModal" data-toggle="modal">
-                <i class="fa fa-trash pull-right delete" id="{{image.id}}"></i></a>
+<div class="wrapper">
+    <div class='image-collection' id="wrapper">
+        {% for image in images %}
+        <div class='thumbholder'>
+            <img src="{{image.thumbnail.url}}" alt="" data="{{image.file.url}}" id="{{image.id}}" class='thumbs'>
+            <div class="img-caption">
+                <label>modified: {{image.created_on}} </label>
+                <a href="#myModal" data-toggle="modal">
+                    <i class="fa fa-trash pull-right delete" id="{{image.id}}"></i></a>
+            </div>
         </div>
-    </div>  
-    {% empty %} 
-    ---- * ----
-  {% endfor %} 
-  {% if images|length > 2%}
-    <!-- bouncy arrow -->
-    <div class="arrow animated bounce">
-        <i class="fa fa-arrow-down"></i> {%endif%}
+        {% empty %} <center>---- * ---- </center>{% endfor %} {% if images|length > 2%}
+        <!-- bouncy arrow -->
+        <div class="arrow animated bounce">
+            <i class="fa fa-arrow-down"></i> {%endif%}
+        </div>
     </div>
 </div>
 <!-- modal -->
@@ -32,7 +31,8 @@
                 <h4 class="modal-title">Warning!</h4>
             </div>
             <div class="modal-body">
-                <img class="del-image" src='' width=100% height=300px><center> You are about to delete this picture, continue ?</center>
+                <img class="del-image" src='' width=100% height=300px>
+                <center> You are about to delete this picture, continue ?</center>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -45,5 +45,5 @@
 </div>
 <!-- /.modal -->
 </div>
-{% endblock %}
 
+{% endblock %}

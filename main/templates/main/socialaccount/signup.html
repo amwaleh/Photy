@@ -18,11 +18,11 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  <button type="submit" class="btn">{% trans "Sign Up" %} &raquo;</button>
 </form>
 </center></div>
 <style>
-	body{  background-image: url("{% static "main/images/cover.JPEG" %}") ; } input{width:200px;} .inset{ background: url("{% static "main/images/logo.jpg" %}"); background-color: rgba(255,255,255,.9); background-repeat: no-repeat; background-position: 25% 4%; background-size:10%; width:80%; margin:0 auto; left:50%; transform: translate(20%,50%); font-weight: 100; padding-bottom :25px; box-shadow: 2px 2px 1px; color:teal; } button{ margin-top: 20px; transform: translate(51%,0%); }
+	body{  background-image: url("{% static "main/images/cover.JPEG" %}") ; } input{width:200px;} .inset{ background: url("{% static "main/images/logo.jpg" %}"); background-color: rgba(0,0,0,.7); background-repeat: no-repeat; background-position: 25% 4%; background-size:10%; width:80%; margin:0 auto; left:50%; transform: translate(20%,50%); font-weight: 100; padding-bottom :25px; box-shadow: 2px 2px 1px; color:white; } button{ margin-top: 20px; transform: translate(51%,0%); }
 
 </style>
 {% endblock %}
