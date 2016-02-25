@@ -119,7 +119,7 @@ class ImageProcessing(LoginRequiredMixin, TemplateView):
         if not os.path.isdir(os.path.dirname(temp_file)):
             os.makedirs(os.path.dirname(temp_file))
         final_image = effect[add_effect](image)
-        housekeeping(output, user_id)
+        housekeeping(output)
         final_image.save(temp_file, 'PNG')
         file_url = os.path.join(
             MEDIA_URL, 'CACHE', 'temp', str(user_id), temp_file_location)
