@@ -12,6 +12,7 @@ from images.settings import BASE_DIR
 
 
 class UploadFile(models.Model):
+
     """Uploadfile and save."""
 
     file = models.ImageField(upload_to='profile/%Y/%m/%d')
@@ -28,17 +29,25 @@ class UploadFile(models.Model):
         ordering = ('-modified_on',)
 
     def get_url(self):
-        """Handle IOERR"""
+        """
+            Handle IOERR : This function checks if file exists,
+            if it doesnt it deletes the record plus any thumbnail 
+            that might exist
+        """
         try:
             # get url if exists
+
             if os.path.isfile(BASE_DIR + self.file.url):
                 return self.thumbnail.url
+            # if the path is not a file do house cleaning
+            self.delete()
             return None
         except IOError:
             return None
 
 
 class UserProfile(models.Model):
+
     """Add a picture to users"""
 
     user = models.OneToOneField(User, related_name='profile')
@@ -60,8 +69,10 @@ class UserProfile(models.Model):
         fb_uid = SocialAccount.objects.filter(
             user_id=self.user.id, provider='facebook')
         if len(fb_uid):
-            return "http://graph.facebook.com/{}/picture?width=40&height=40".format(fb_uid[0].uid)
-        return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.user.email).hexdigest())
+            return "http://graph.facebook.com/{}/picture?\
+                    width=40&height=40".format(fb_uid[0].uid)
+        return "http://www.gravatar.com/avatar/{}?s=40".format(
+            hashlib.md5(self.user.email).hexdigest())
 
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])

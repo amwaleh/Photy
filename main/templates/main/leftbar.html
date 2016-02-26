@@ -19,8 +19,9 @@
             </div>
         </div>
         {%endif%}
-
-        </center>{% endfor %} {% if images|length > 2%}
+        {%empty%}
+        <{% endfor %} 
+        {% if images|length > 2%}
         <!-- bouncy arrow -->
         <div class="arrow animated bounce">
             <i class="fa fa-arrow-down"></i> {%endif%}
