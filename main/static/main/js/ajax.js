@@ -49,7 +49,10 @@ var myApp = {
         var src = $(this).attr("data");
         $(".editor").attr("src", src);
         $("#download").attr("href", src);
-        $(".fb-share-button").attr("data-href", src)
+        var resource = window.location.origin + src
+        $(".fb-share-button").attr("data-href", resource)
+        FB.XFBML.parse()
+        console.log(resource)
         var getThumb = function(effect, pic_path, $li) {
             $.ajax({
                 type: 'GET',

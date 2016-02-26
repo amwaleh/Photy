@@ -12,7 +12,6 @@ from images.settings import BASE_DIR
 
 
 class UploadFile(models.Model):
-
     """Uploadfile and save."""
 
     file = models.ImageField(upload_to='profile/%Y/%m/%d')
@@ -47,7 +46,6 @@ class UploadFile(models.Model):
 
 
 class UserProfile(models.Model):
-
     """Add a picture to users"""
 
     user = models.OneToOneField(User, related_name='profile')
