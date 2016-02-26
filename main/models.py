@@ -6,7 +6,7 @@ from allauth.socialaccount.models import SocialAccount
 import hashlib
 import os
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFill
+from imagekit.processors import ResizeToFit
 from django.dispatch import receiver
 from images.settings import BASE_DIR
 from imagekit.models import ProcessedImageField
@@ -15,17 +15,16 @@ from imagekit.models import ProcessedImageField
 class UploadFile(models.Model):
     """Uploadfile and save."""
 
-    #file = models.ImageField(upload_to='profile/%Y/%m/%d')
     file = ProcessedImageField(upload_to='profile/%Y/%m/%d',
-                               processors=[ResizeToFill(1200, 960)],
+                               processors=[ResizeToFit(800, 600,False)],
                                format='JPEG',
-                               options={'quality': 100})
+                               options={'quality': 60})
     owner = models.ForeignKey(User)
     edited = models.SmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     modified_on = models.DateTimeField(auto_now=True)
     thumbnail = ImageSpecField(source='file',
-                                      processors=[ResizeToFill(120, 120)],
+                                      processors=[ResizeToFit(120, 120,False)],
                                       format='JPEG',
                                       options={'quality': 100})
 

@@ -37,6 +37,7 @@ var myApp = {
             },
             success: function(data) {
                 $(".editor").attr("src", data);
+                $(".editor").fadeIn().delay(200)
                 $("#download").attr("href", data);
                 $('#loading-indicator').hide();
             },

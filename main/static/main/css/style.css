@@ -7,12 +7,12 @@ body {
 .photo {
     background-color: white;
     margin: 10px 30px 10px;
-    width: 80%;
+    width: 100%;
     height: 90%;
     padding: 5px 5px 50px 5px;
     min-width: 200px;
     min-height: 200px;
-    max-width: 900px;
+    max-width: 700px;
     max-height: 600px;
     box-shadow: 2px 2px 2px #000;
 }
@@ -22,6 +22,7 @@ body {
     position: relative;
     margin-left: 8%;
     max-width: 900px;
+    min-width: 500px;
 }
 
 .effect-box {
@@ -133,7 +134,9 @@ body {
 
 .my-slidebox {
     background-color: rgba(128, 128, 128, 0.1);
-    margin-left: 10px
+    margin-left: 10px;
+    width: 108%;
+    margin-right: 10px
 }
 
 .image-collection {
@@ -147,15 +150,11 @@ body {
     height: 490px;
 }
 
-.main:hover {
-    width: 420px;
-}
-
 .thumbs {
-    width: 170px;
-    height: 150px;
-    margin: 2%;
-    left: 35px;
+    width: 98%;
+    height: 140px;
+    margin: 1px;
+    left: 50%;
     border: 3px solid white;
     border-radius: 3px;
     box-shadow: 1px;
@@ -164,12 +163,13 @@ body {
 }
 
 .thumbholder {
-    width: 180px;
+    width: 40%;
+    min-width: 160px;
     margin-left: 10px;
     margin-right: 5px;
     background-color: rgba(255, 255, 255, 0.9);
     margin-bottom: 10px;
-    max-height: 200px;
+    max-height: 180px;
     box-shadow: 2px 2px 2px #333;
     float: left;
 }
@@ -179,15 +179,17 @@ body {
     margin: 0;
     height: 100vh;
     min-width: 214px;
-    width: 420px;
+    max-width: 28%;
+    width: auto;
     background-color: darkgrey;
     padding: 0;
 }
 
 .work {
     background-color: Gainsboro;
-    border-left: thin solid;
+    border-left: thin solid Gainsboro;
     position: relative;
+    min-width: 450px;
 }
 
 .uploader {
@@ -196,7 +198,7 @@ body {
 
 .img-caption {
     padding-top: 2px;
-    width: 170px;
+    width: 93%;
     margin-left: 7px;
     margin-right: 5px;
     text-align: left;
@@ -325,12 +327,11 @@ body {
 }
 
 .delete {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .navbar-wrapper {
     background-color: #0097a7;
-    box-shadow: 2px 5px 1px black;
 }
 
 .navbar-brand {
@@ -351,9 +352,7 @@ body {
     color: grey;
 }
 
-.navbar-collapse {
-    box-shadow: 2px 2px 1px black;
-}
+.navbar-collapse {}
 
 .retouch {
     color: rgba(255, 200, 0, 0.8);
