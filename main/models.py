@@ -9,12 +9,17 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 from django.dispatch import receiver
 from images.settings import BASE_DIR
+from imagekit.models import ProcessedImageField
 
 
 class UploadFile(models.Model):
     """Uploadfile and save."""
 
-    file = models.ImageField(upload_to='profile/%Y/%m/%d')
+    #file = models.ImageField(upload_to='profile/%Y/%m/%d')
+    file = ProcessedImageField(upload_to='profile/%Y/%m/%d',
+                               processors=[ResizeToFill(1200, 960)],
+                               format='JPEG',
+                               options={'quality': 100})
     owner = models.ForeignKey(User)
     edited = models.SmallIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -46,6 +51,7 @@ class UploadFile(models.Model):
 
 
 class UserProfile(models.Model):
+
     """Add a picture to users"""
 
     user = models.OneToOneField(User, related_name='profile')
