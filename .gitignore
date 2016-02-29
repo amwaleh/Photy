@@ -1,0 +1,6 @@
+env
+env/*
+*.pyc
+*.*~
+media/*
+migrations/*

@@ -1,0 +1,27 @@
+language: python
+python:
+  - "2.7.10"
+ 
+addons:
+  postgresql: "9.3"
+
+services:
+  - postgresql
+
+before_install:
+  - "pip install -r requirements.txt"
+before_script:
+  - psql -c 'create database images;' -U postgres
+
+branches:
+  only:
+  - develop
+  - master
+  - feature/test
+env:
+  global:
+    - TRAVIS_BUILD=true
+script: 
+   coverage run --omit="*env*","migrations*","web*","static","templates" manage.py test 
+after_success: 
+  coveralls

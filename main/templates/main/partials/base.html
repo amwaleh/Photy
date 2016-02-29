@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url"           content="http://localhost:8000" />
+    <meta property="og:type"          content="photy" />
+    <meta property="og:title"         content="Photy editor" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="" />
+    {% load staticfiles %}
+    {% load imagekit %}
+    <title>Photy</title>
+    <link rel='shortcut icon' href= "{% static "main/images/logo.png" %}" type='image/x-icon' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href= "https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="{% static "main/css/social.css"%}" rel="stylesheet">
+    <!-- Loading Bootstrap -->
+    <link href="{% static "main/css/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <!-- Loading Flat UI --> 
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+    <script src="{% static "main/js/vendor/jquery.min.js"%}"></script>
+    <link href="{% static "main/css/dropzone.css"%}" type="text/css" rel="stylesheet"/>
+    <link href="{% static "main/css/flat-ui.css"%}" type="text/css" rel="stylesheet"/>
+    <script src="{% static "main/js/flat-ui.js"%}"></script>
+    <link rel="stylesheet" href="{% static "main/css/style.css" %}">
+</head>
+<body ng-app="Slidebox">
+{% block content %}
+    
+{% endblock%}
+
+</body>   
+</html>   
+ <script src="{% static "main/js/ajax.js"%}"></script>
+<script src="{% static "main/js/scroll.js"%}"></script>
+<script src="{% static "main/js/dropzone.js"%}"></script>

@@ -1,0 +1,101 @@
+{% extends "main/account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+{% load staticfiles%}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+    <!DOCTYPE html>
+<html>
+<head>
+ <link href="{% static "main/css/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+ <link href="{% static "main/css/social.css"%}" rel="stylesheet">
+
+
+
+<style>
+
+
+body {
+  background-image: url("{% static "main/images/cover.JPEG" %}");
+  background-size: cover; 
+  background-color: #555;
+  filter: blur(50px);
+
+ 
+}
+.
+.container{
+  width:90%;
+  margin:0 auto;
+ 
+  
+
+}
+.card{
+  margin:0 auto;
+  background:rgba(255,255,255,0.9);
+ transform: translate(5%, 10%);
+  display: inline-block;
+  width:100%;
+}
+img{
+   
+  filter: blur(5px);
+}
+.card-content p{
+  text-align: center;
+  font-weight: 200;
+  padding: 20px;
+
+}  
+.login{
+  margin-bottom:30px;
+}
+
+
+</style>
+{% load socialaccount %}
+    <title></title>
+</head>
+<body>
+<div class="container-fluid  col-xl-10 col-lg-10 col-md-10 col-xs-12">
+  <div class="row col-lg-offset-6">
+        <div class="col-sm-12 col-md-7">
+          <div class="card">
+            <div class="card-image">
+            <center>
+            <img src="{% static "main/images/logo.jpg" %}" height=10% class='img-circle'>
+            </center>
+              <imqg src="{% static "main/images/cover.JPEG" %}" width=100%>
+              <span class="card-title"></span>
+            </div>
+            <div class="card-content">
+              <p >Photy is an image editing app that lets you upload your photos online,
+              apply filters and share with friends.
+              </p>
+            </div>
+            <div class="card-action">
+            <CENTER>
+              <a href="{% provider_login_url "facebook" method="oauth2" %}" class='login btn btn-MD btn-social btn-facebook'> <span class="fa fa-facebook"></span>Login with Facebook </a>
+
+                 </CENTER>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+{% providers_media_js %}
+
+</div>
+</body>
+
+
+</html>
+
+{% endblock %}

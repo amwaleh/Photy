@@ -1,0 +1,71 @@
+{% extends "main/account/base.html" %}
+{% load staticfiles%}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+    <div class="inset">
+    <center><h5> Sign Up </h5></center>
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+          {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.username }} {{ form.username.errors }}
+            <br>
+            {{ form.password1 }} {{ form.password1.errors }}
+            <br>
+            {{ form.password2 }} {{ form.password2.errors }}
+            <br>
+            <input id="id_email" name="email" type="email" placeholder="email@address.com"> {{ form.email.errors }}
+            <br><br>
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn" type="submit">{% trans "Sign Up" %} &raquo;</button>
+        </form>
+        <div class="footnote">
+            <center>Already have an account? <a href="{{ login_url }}">sign in</a></center>
+        </div>
+    </div>
+    <style>
+body {
+    background-image: url("{% static "main/images/cover.JPEG" %}");
+    width:100%;
+}
+
+input {
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 5px;
+}
+
+.inset {
+   
+    background-color: rgba(255, 255, 255, .2);
+    background-repeat: no-repeat;
+    background-position: 25% 4%;
+    background-size: 10%;
+    width: 30%;
+    margin: 0 auto;
+    left: 50%;
+    transform: translate(1%, 20%);
+    font-weight: 100;
+    padding: 25px;
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, .7);
+    color: white;
+}
+
+button {
+    margin-top: 20px;
+    margin-left:18%;
+    width:200px;
+}
+.errorlist{
+  font-size: 10px;
+  color:yellow;
+}
+</style>
+
+{% endblock %}
