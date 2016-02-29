@@ -158,4 +158,5 @@ ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_AUTO_SIGNUP = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 DEBUG = True

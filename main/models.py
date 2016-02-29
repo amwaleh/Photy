@@ -16,7 +16,7 @@ class UploadFile(models.Model):
     """Uploadfile and save."""
 
     file = ProcessedImageField(upload_to='profile/%Y/%m/%d',
-                               processors=[ResizeToFit(800, 600,False)],
+                               processors=[ResizeToFit(800, 600, False)],
                                format='JPEG',
                                options={'quality': 60})
     owner = models.ForeignKey(User)
@@ -24,7 +24,7 @@ class UploadFile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     modified_on = models.DateTimeField(auto_now=True)
     thumbnail = ImageSpecField(source='file',
-                                      processors=[ResizeToFit(120, 120,False)],
+                                      processors=[ResizeToFit(120, 120, False)],
                                       format='JPEG',
                                       options={'quality': 100})
 
@@ -89,7 +89,7 @@ def _delete_file(path):
 
 @receiver(models.signals.pre_delete, sender=UploadFile)
 def delete_file(sender, instance, *args, **kwargs):
-    """Delete image fils on `post_delete`."""
+    """Delete image files on `post_delete`."""
     if instance.file:
         _delete_file(instance.file.path)
 

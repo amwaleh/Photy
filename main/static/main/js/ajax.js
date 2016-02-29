@@ -37,15 +37,16 @@ var myApp = {
             },
             success: function(data) {
                 $(".editor").attr("src", data);
-                $(".editor").fadeIn().delay(200)
+
                 $("#download").attr("href", data);
                 $('#loading-indicator').hide();
+                $(".editor").fadeTo("slow", 0.5);
+                $(".editor").fadeTo("slow", 1).delay(200);
             },
         });
     },
     prepareCanvas: function(e) {
         e.preventDefault();
-
         var thumb = $(this).attr("src");
         var src = $(this).attr("data");
         $(".editor").attr("src", src);
@@ -53,8 +54,7 @@ var myApp = {
         var resource = window.location.origin + src
         $(".fb-share-button").attr("data-href", resource)
         FB.XFBML.parse()
-        console.log(resource)
-        var getThumb = function(effect, pic_path, $li) {
+        var getThumb = function(effect, pic_path, sli) {
             $.ajax({
                 type: 'GET',
                 url: '/image/',
@@ -64,9 +64,11 @@ var myApp = {
                     'preview': true,
                 },
                 success: function(data) {
-                    console.log(data)
+                    sli.fadeIn().delay()
 
-                    $li.css('background-image', 'url("' + data + '")')
+
+                    sli.css('background-image', 'url("' + data + '")')
+
                 },
             });
         }
@@ -74,6 +76,8 @@ var myApp = {
             $li = $(this)
             var effect = $(this).text();
             var pic_path = thumb;
+            $li.css('background-image', '')
+            $li.fadeOut()
             getThumb(effect, pic_path, $li);
         });
     },
